@@ -1,0 +1,19 @@
+<VirtualHost *:80>
+
+	ServerAdmin webmaster@localhost
+	
+	DocumentRoot /home/www/public
+	<Directory /home/www/public/>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride All
+		Order allow,deny
+		allow from all
+	</Directory>
+	
+	PHPINIDir /home/conf/
+
+	LogLevel error
+	ErrorLog /home/log/error.log
+	CustomLog /home/log/access.log combined
+
+</VirtualHost>
