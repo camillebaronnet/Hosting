@@ -1,6 +1,8 @@
 FROM debian:latest
 MAINTAINER Camille Baronnet <git@camillebaronnet.fr>
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get -y update && \
 	apt-get -y install apache2 php5 php5-mysql libapache2-mod-php5 php5-curl php5-gd php5-mcrypt ssmtp cron curl locales && \
 	apt-get clean && \ 
