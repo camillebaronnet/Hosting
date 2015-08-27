@@ -1,3 +1,8 @@
+[![Docker hub](https://img.shields.io/badge/Docker%20pull-camillebaronnet/hosting-green.svg)](https://hub.docker.com/r/camillebaronnet/hosting/)
+
+[![Website](https://img.shields.io/badge/website-camillebaronnet.fr-orange.svg)](https://www.camillebaronnet.fr/)
+[![Twitter](https://img.shields.io/badge/twitter-@camillebaronnet-blue.svg)](https://twitter.com/camillebaronnet)
+
 # Docker hosting
 
 Docker hosting contient tout ce qu'il faut pour créer un process unique et isolé pour un projet web. Il est équipé de :
