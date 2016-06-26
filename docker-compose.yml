@@ -1,0 +1,6 @@
+server:
+    build: .
+    volumes:
+        - "./home:/home"
+    ports:
+        - "8080:80"

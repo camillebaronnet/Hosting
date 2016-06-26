@@ -55,6 +55,6 @@ if (isset($_GET['phpinfo'])) {
 		The web server software is running but no content has been added, yet.</p>
 	</div>
 	<a class="btn" href="phpinfo">View PHP Info</a>
-	<a class="btn" href="https://registry.hub.docker.com/u/camillebaronnet/apache-php/" target="blank">Documentation</a>
+	<a class="btn" href="https://registry.hub.docker.com/u/camillebaronnet/hosting/" target="blank">Documentation</a>
 </body>
 </html>

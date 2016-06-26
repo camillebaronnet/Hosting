@@ -1,13 +1,19 @@
-FROM debian:latest
+FROM php:7-apache
 MAINTAINER Camille Baronnet <git@camillebaronnet.fr>
 
-ENV DEBIAN_FRONTEND noninteractive
+#ENV DEBIAN_FRONTEND noninteractive
+
+#RUN apt-get -y update && \
+#	apt-get -y install apache2 php5 php5-mysql libapache2-mod-php5 php5-curl php5-gd php5-mcrypt ssmtp cron curl locales && \
+#	apt-get clean && \ 
 
 RUN apt-get -y update && \
-	apt-get -y install apache2 php5 php5-mysql libapache2-mod-php5 php5-curl php5-gd php5-mcrypt ssmtp cron curl locales && \
-	apt-get clean && \ 
-	rm -R /var/www/* && \ 
-	rm -R /etc/apache2/sites-available && rm /etc/apache2/sites-enabled/*
+	apt-get -y install ssmtp cron curl locales libapache2-mod-security2 libpng-dev libmcrypt-dev libpq-dev libsqlite3-dev libxml2-dev && \
+	apt-get clean
+
+# Check : curl
+
+RUN docker-php-ext-install gd json mbstring mcrypt opcache pdo pdo_mysql pdo_pgsql pdo_sqlite pgsql phar session simplexml soap sockets xml zip
 
 COPY ./locales /etc/locale.gen
 RUN locale-gen
@@ -22,25 +28,6 @@ RUN a2dismod autoindex -f
 RUN rm /etc/ssmtp/ssmtp.conf && ln -s /home/conf/ssmtp.conf /etc/ssmtp/
 RUN rm /etc/crontab && ln -s /home/conf/crontab.conf /etc/crontab
 
-ENV APACHE_RUN_USER  www-data
-ENV APACHE_RUN_GROUP www-data
-ENV APACHE_PID_FILE  /var/run/apache2.pid
-ENV APACHE_RUN_DIR   /var/run/apache2
-ENV APACHE_LOCK_DIR  /var/lock/apache2
-ENV APACHE_LOG_DIR   /var/log/apache2
-ENV APACHE_USER_UID 0
-
-RUN mkdir -p /etc/apache2/conf.d/ && \
-	touch /etc/apache2/conf.d/server.conf && \
-	touch /etc/apache2/conf.d/security
-
-RUN echo "ServerName localhost" > /etc/apache2/conf.d/server.conf && \
-	sed -i 's/expose_php = On/expose_php = Off/' /etc/php5/apache2/php.ini && \
-	sed -i 's/ServerSignature On/ServerSignature Off/' /etc/apache2/conf.d/security && \
-	sed -i 's/ServerTokens OS/ServerTokens Prod/' /etc/apache2/conf.d/security
-
-COPY ./startup.sh /root/startup.sh
-
 EXPOSE 80
 
-CMD ["/bin/bash", "/root/startup.sh"]
+#CMD ["/bin/bash", "/root/startup.sh"]

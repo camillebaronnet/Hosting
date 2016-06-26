@@ -6,7 +6,7 @@
 # Docker hosting
 
 Docker hosting contient tout ce qu'il faut pour créer un process unique et isolé pour un projet web. Il est équipé de :
-* PHP 5 / Apache 2
+* PHP 7 / Apache 2
 * SSMTP pour l'envoi d'E-mails
 * Cron / Curl
 * Des locales notamment pour l'utilisation de `setlocal()`
