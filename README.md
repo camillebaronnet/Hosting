@@ -41,3 +41,18 @@ docker run -p 80:80 -d --name lenomdemoncontenaire -v /chemin/vers/mon/site:/hom
 * `--name lenomdemoncontenaire`, à vous de choisir le nom que vous voulez donner pour repérer plus facilement votre conteneur
 * `-v /chemin/vers/mon/site:/home/www/public`, changez `/chemin/vers/mon/site` par le chemin d'accès à vos site depuis votre machine hôte. Vous pouvez aussi monter directement `/home` vers votre machine hôte pour accèder en local à la configuration complète et aux logs
 * `hosting` est le nom de l'image, si vous avez utilisé la méthode 2, remplacer 'hosting' par `camillebaronnet/hosting`
+
+### Arborescence du projet dans `/home`
+
+	./
+	├── conf/
+	│   ├── crontab.conf
+	│   ├── php.ini
+	│   └── ssmtp.conf
+	├── logs/
+	│   ├── access.log
+	│   └── error.log
+	└── www/
+	    └── public
+	        ├── index.php
+	        └── .htaccess
