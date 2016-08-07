@@ -19,7 +19,7 @@ WORKDIR /home
 RUN rm -rf /var/www && rm -rf /etc/apache2/sites-enabled/* && \
 	rm -rf /etc/apache2/sites-available && \
 	rm -rf /etc/apache2/conf-enabled/docker-php.conf && \
-	rm -rf /etc/apache2/conf-enabled/other-vhosts-access-log.conf && \ 
+	rm -rf /etc/apache2/conf-enabled/other-vhosts-access-log.conf && \
 	rm -rf /etc/apache2/conf-available/docker-php.conf
 
 COPY ./home /home
@@ -38,5 +38,6 @@ RUN rm /etc/crontab && ln -s /home/conf/crontab.conf /etc/crontab
 
 EXPOSE 80
 
+VOLUME ["/home"]
 COPY ./startup.sh  /root/startup.sh
 CMD ["/bin/bash", "/root/startup.sh"]
