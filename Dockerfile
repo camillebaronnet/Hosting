@@ -43,4 +43,5 @@ COPY ./startup.sh /root/startup.sh
 EXPOSE 80
 
 VOLUME ["/home"]
-CMD ["/bin/bash", "/root/startup.sh"]
+ENTRYPOINT ["/root/startup.sh"]
+CMD ["/usr/sbin/apache2 -D FOREGROUND"]
