@@ -20,6 +20,7 @@ RUN a2enmod rewrite && a2dismod autoindex -f
 
 RUN rm /etc/ssmtp/ssmtp.conf && ln -s /home/conf/ssmtp.conf /etc/ssmtp/
 RUN rm /etc/crontab && ln -s /home/conf/crontab.conf /etc/crontab
+RUN rm /etc/php5/cli/php.ini && ln -s /home/conf/php.ini /etc/php5/cli/
 
 ENV APACHE_RUN_USER  www-data
 ENV APACHE_RUN_GROUP www-data
